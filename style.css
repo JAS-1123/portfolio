@@ -218,6 +218,9 @@ i {
     opacity: 0;
 }
 
+
+/* */
+
 #codeforces:hover .rc, #atcoder:hover .rc, #codechef:hover .rc{
     animation: showdata 0.5s forwards;
     opacity: 1;
@@ -354,6 +357,4 @@ i {
 #sc3 {
     margin-left: 400px;
 }
-
-
 

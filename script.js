@@ -107,7 +107,7 @@ async function loadAtCoderGraph() {
 }
 loadAtCoderGraph();
 
-const ratingsCC = [953, 1136, 1166, 1193, 1160, 1228, 1285, 1355, 1423, 1435, 1442, 1450, 1462, 1490, 1513, 1523, 1524, 1536, 1543, 1557, 1558, 1591, 1610, 1609, 1620, 1650, 1634, 1655, 1690, 1718, 1732];
+const ratingsCC = [953, 1136, 1166, 1193, 1160, 1228, 1285, 1355, 1423, 1435, 1442, 1450, 1462, 1490, 1513, 1523, 1524, 1536, 1543, 1557, 1558, 1591, 1610, 1609, 1620, 1650, 1634, 1655, 1690, 1718, 1734];
 async function loadCCGraph() {
     const handle = "chosen_undead";
     const labels = ratingsCC.map((_, idx) => idx + 1);
@@ -203,6 +203,31 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+document.addEventListener("DOMContentLoaded", function () {
+    const icons = document.querySelectorAll("#codeforces .cfinfo #name");
+    icons.forEach(icon => {
+        icon.addEventListener("click", function () {
+            window.open("https://codeforces.com/profile/JAS1123", "_blank");
+        });
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const icons = document.querySelectorAll("#codechef .cfinfo #name");
+    icons.forEach(icon => {
+        icon.addEventListener("click", function () {
+            window.open("https://www.codechef.com/users/chosen_undead", "_blank");
+        });
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const icons = document.querySelectorAll("#atcoder .cfinfo #name");
+    icons.forEach(icon => {
+        icon.addEventListener("click", function () {
+            window.open("https://atcoder.jp/users/JAS1123", "_blank");
+        });
+    });
+});
+
 gsap.registerPlugin(ScrollTrigger,ScrollSmoother,ScrollToPlugin,SplitText,TextPlugin,);
 
 function calcOffsets() {
@@ -273,7 +298,7 @@ requestAnimationFrame(() => {
         x: 0,
         y: 0,
         scale: 1,
-        duration: 1
+        duration: 0.5
     }
     );
     gsap.to("#sc1, #sc2, #sc3", {
@@ -287,30 +312,62 @@ requestAnimationFrame(() => {
         opacity: 1,
     },{
         opacity: 0,
-        duration: 3,
-    }, "-=2.5");
+        duration: 2,
+    }, "-=1.5");
     let split2 = new SplitText("#intromain", {
         type: "lines"
     });
     tl.from(split2.lines, {
         autoAlpha: 0,
         y: 50,
-        duration: 1.25,
+        duration: 1.0,
         stagger: 0.2 
-    }, "-=0.25");
+    }, "-=0.75");
     tl.from("#img", {
         autoAlpha: 0,
-        duration: 1.25 
-    }, "-=0.5");
+        duration: 1 
+    }, "-=0.75");
     tl.from("#contact i", {
         y: 30, 
         autoAlpha: 0,
         stagger: 0.15,
-        duration: 1
-    }, "-=0.5");
-    tl.form(".introend1", {
-        duration: 1,
-        autoAlpha: 0
-    })
+        duration: 0.5
+    }, "-=0.25");
 
+document.addEventListener("DOMContentLoaded", () => {
+  const skills = gsap.utils.toArray("#languages .skillset");
+    gsap.from(skills, {
+    autoAlpha: 0,
+    y: 25,
+    duration: 0.8,
+    stagger: {
+      each: 0.06,
+      from: "random"
+    },
+    ease: "power2.in",
+    clearProps: "transform,opacity,visibility",
+      scrollTrigger: {
+        trigger: "#languages",
+        start: "top 80%",
+        once: true,
+      }
+    });
+
+    const profiles = gsap.utils.toArray("#containercc > div");
+    gsap.from(profiles, {
+        autoAlpha: 0,
+        y: 40,
+        duration: 1,
+        stagger: { each: 0.3, from: "center" },
+        ease: "power2.out",
+        clearProps: "transform,opacity,visibility",
+        scrollTrigger: {
+            trigger: "#containercc",
+            start: "top 75%",
+            once: true,
+        }
+    });
 });
+
+
+})
